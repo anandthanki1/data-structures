@@ -191,6 +191,49 @@ class LinkedList {
         }
         this._length++;
     }
+
+    /**
+     * It finds the midElement in the LinkedList
+     */
+    midpoint() {
+        if(!this.head) {
+            return;
+        }
+
+        let slow = this.getFirst();
+        let fast = this.getFirst();
+
+        while(fast.next && fast.next.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        return slow;
+    }
+
+    /**
+     * It checks if LinkedList is circular
+     */
+    isCircular() {
+        if(!this.head) {
+            return;
+        }
+
+        let slow = this.getFirst();
+        let fast = this.getFirst();
+
+        while(fast.next && fast.next.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(slow === fast) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
 
 const myLinkedList = new LinkedList();
